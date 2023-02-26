@@ -101,7 +101,7 @@ function process(question) {
                 key: "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY",
                 indent: true,
                 limit: 1,
-                query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","").replaceAll("what is","").replaceAll("?",)
+                query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","").replaceAll("what is","").replaceAll("?","")
             },
         
             success: function(data){
@@ -113,7 +113,7 @@ function process(question) {
 
                     if (item["resultScore"] > 0.001) {
                         let result = item["result"]
-                    
+                        
 
                         let image = ""
                         if (result["image"]) {
