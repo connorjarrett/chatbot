@@ -101,7 +101,7 @@ function process(question) {
                 key: "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY",
                 indent: true,
                 limit: 1,
-                query: question
+                query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","")
             },
         
             success: function(data){
@@ -114,10 +114,13 @@ function process(question) {
                     if (item["resultScore"] > 0.001) {
                         let result = item["result"]
                         
-                        out = `I've Googled "${question}", here's what I found
+                        console.log(result)
+
+                        out = `
+                        ${result["detailedDescription"]["articleBody"]}<sup><a href="${result["detailedDescription"]["url"]}" target="_BLANK">source</a></sup>
                         <br><br>
-                        ${result["detailedDescription"]["articleBody"]} under
-                        the categories ${result["@type"].toString()}`
+                        <img src="${result["image"]["contentUrl"]}">
+                        `
                     }
                 }
             }
