@@ -1,7 +1,4 @@
 # chatbot
-it's probably better than [bard](https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo)
-
-<br>
 
 ## How does it work?
 It has a few simple built in commands (Say and Greet) which allow it to execute specific functions when triggered. But the bulk of it (currently) is performed through the Google Search API and the Google Knowledge Graph API.
