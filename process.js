@@ -225,6 +225,16 @@ function process(question) {
                     } else {
                         out = "I haven't found any results for that online"
                     }
+                },
+                error: function(xhr) {
+                    let error = $.parseJSON(xhr["responseText"])
+
+                    if (error["error"]["status"] == "RESOURCE_EXHAUSTED") {
+                        out = "I'm too cheap to pay for a higher API quota, sorry!"
+                    } else {
+                        out = "Google's Search API returned an error. Probably my fault. Sorry!"
+                    }
+                    
                 }
             })
         }
