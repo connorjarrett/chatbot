@@ -106,13 +106,14 @@ function process(question) {
         
             success: function(data){
                 let items = data["itemListElement"]
-                
+                console.log(items)
+
                 for (let y=0; y<items.length; y++) {
                     let item = items[y]
 
-                    if (item["resultScore"] > 0.1) {
+                    if (item["resultScore"] > 0.001) {
                         let result = item["result"]
-
+                        
                         out = `I've Googled "${question}", here's what I found
                         <br><br>
                         ${result["detailedDescription"]["articleBody"]} under
@@ -145,6 +146,7 @@ function process(question) {
 
                     const prioritySites = [
                         "connorjarrett.com",
+                        "stackoverflow.com",    
                         "cade.dev"
                     ]
                     
@@ -174,10 +176,24 @@ function process(question) {
 
                         console.log(priority)
 
+                        let snippet = priority["snippet"]
+                        snippet = snippet.replace(/[A-Za-z0-9]+ [0-9]+,\s[0-9]+\s\.\.\.\s/i, "")
+
                         out = `
-                        ${priority["snippet"]}<br><br>
-                        [Google Search, <a href="${priority["link"]}">${priority["displayLink"].replace("www.","")}</a>]
+                        ${snippet}<br><br>
+                        [Google Search, <a href="${priority["link"]}" target="_BLANK">${priority["displayLink"].replace("www.","")}</a>]
                         `
+
+                        let images = priority["pagemap"]["cse_image"]
+                        if (images) {
+                            if (images.length > 0) {
+                                let image = images[0]["src"]
+                                out = out + `
+                                <br><br>
+                                <img src="${image}">
+                                `
+                            }
+                        }
 
                     } else {
                         out = "I haven't found any results for that online"
