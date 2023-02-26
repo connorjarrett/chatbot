@@ -46,6 +46,11 @@ body {
     max-width: 45%;
 }
 
+.bubble p {
+    margin: 0;
+    padding: 0;
+}
+
 .bubble::before {
     position: absolute;
     content: '';

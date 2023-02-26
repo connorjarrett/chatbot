@@ -174,10 +174,11 @@ function process(question) {
 
                         console.log(priority)
 
-                        out = `Here's what Google said:<br><br>
-                        ${priority["snippet"]}<br>-----<br>
-                        ${priority["link"]}
+                        out = `
+                        ${priority["snippet"]}<br><br>
+                        [Google Search, <a href="${priority["link"]}">${priority["displayLink"].replace("www.","")}</a>]
                         `
+
                     } else {
                         out = "I haven't found any results for that online"
                     }

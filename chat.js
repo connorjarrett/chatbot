@@ -16,7 +16,8 @@ function escapeHtml(unsafe) {
  }
 
 function send(message,from) {
-    message = escapeHtml(message)
+    // message = escapeHtml(message)
+    message = `<p>${message}</p>`
 
     if (from != "user" && from != "bot") {
         console.error("Invalid Sender, only 'user' or 'bot' is accepted")
