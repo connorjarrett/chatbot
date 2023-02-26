@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.icon {
+    font-family: 'Material Symbols Rounded';
+
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.messages-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    max-width: 6in;
+    height: 75%;
+
+    overflow-y: scroll;
+
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.bubble {
+    position: relative;
+    display: inline-flex;
+    margin-bottom: 3px;
+
+    padding: 7px;
+    border-radius: 15px;
+
+    word-break: break-word;
+    max-width: 45%;
+}
+
+.bubble::before {
+    position: absolute;
+    content: '';
+
+    background-color: inherit;
+    width: 12px;
+    height: 12px;
+
+    bottom: -3px;
+    left: -3px;
+
+    border-radius: 10px;
+
+    z-index: -1;
+}
+
+.bubble[data-sender="user"] {
+    text-align: right;
+    margin-left: auto;
+    
+    background-color: #0b93f6;
+    color: white;
+}
+
+.bubble[data-sender="user"]::before {
+    left: unset;
+    right: -3px;
+}
+
+.bubble[data-sender="bot"] {
+    margin-right: auto;
+
+    background-color: #e5e5ea;
+}
+
+.bubble.typing {
+    /* position: absolute; */
+
+    background-image: url("https://media.tenor.com/NDL0Cu0TAQoAAAAM/typing-loading.gif");
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 20px;
+    padding: 10px;
+}
+
+form {
+    display: flex;
+    margin-top: 1em;
+
+    width: 60%;
+    max-width: 6in;
+}
+
+form input {
+    border-radius: 1.5vmin;
+    box-sizing: border-box;
+}
+
+form input[type="text"] {
+    flex-grow: 1;
+    border: 1px solid grey;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+form input[type="text"]:focus {
+    border: 1.2px solid #222222 !important;
+    outline: none;
+}
+
+form input[type="submit"] {
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+
+    aspect-ratio: 1/1;
+    height: 100%;
+    
+    border: none;
+    background-color: #007aff;
+    color: white;
+}
+
+form input[type="submit"].unavailable {
+    background-color: #e5e5ea;
+    color: #afafaf;
+
+    cursor: not-allowed;
+}
