@@ -51,9 +51,12 @@ body {
     padding: 0;
 }
 
-.bubble img {
+.bubble img, .bubble iframe {
     width: 100%;
     border-radius: 15px;
+    overflow: hidden;
+    border: none;
+    outline: none;
 }
 
 .bubble::before {

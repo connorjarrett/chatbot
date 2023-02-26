@@ -101,7 +101,7 @@ function process(question) {
                 key: "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY",
                 indent: true,
                 limit: 1,
-                query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","")
+                query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","").replaceAll("what is","").replaceAll("?",)
             },
         
             success: function(data){
@@ -113,13 +113,23 @@ function process(question) {
 
                     if (item["resultScore"] > 0.001) {
                         let result = item["result"]
-                        
-                        console.log(result)
+                    
+
+                        let image = ""
+                        if (result["image"]) {
+                            image = `<img src="${result["image"]["contentUrl"]}">`  
+                        }
+
+                        let description = result["description"]
+                        if (result["detailedDescription"]) {
+                            description = result["detailedDescription"]["articleBody"]
+                        }
 
                         out = `
-                        ${result["detailedDescription"]["articleBody"]}<sup><a href="${result["detailedDescription"]["url"]}" target="_BLANK">source</a></sup>
+                        ${description}
                         <br><br>
-                        <img src="${result["image"]["contentUrl"]}">
+                        ${image}
+                        <a href="${result["detailedDescription"]["url"]}" target="_BLANK">[Source]</a>
                         `
                     }
                 }
@@ -183,20 +193,32 @@ function process(question) {
                         snippet = snippet.replace(/[A-Za-z0-9]+ [0-9]+,\s[0-9]+\s\.\.\.\s/i, "")
 
                         out = `
-                        ${snippet}<br><br>
-                        [Google Search, <a href="${priority["link"]}" target="_BLANK">${priority["displayLink"].replace("www.","")}</a>]
+                        ${snippet}
                         `
 
                         let images = priority["pagemap"]["cse_image"]
                         if (images) {
                             if (images.length > 0) {
-                                let image = images[0]["src"]
-                                out = out + `
-                                <br><br>
-                                <img src="${image}">
-                                `
+                                if (priority["displayLink"] != "www.youtube.com") {
+                                    let image = images[0]["src"]
+                                    out = out + `
+                                    <br><br>
+                                    <img src="${image}">
+                                    `
+                                } else {
+                                    videoID = priority["link"]
+    
+                                    videoID = videoID.substr(videoID.length - 11);
+
+                                    out = out + `
+                                    <br><br>
+                                    <iframe src="https://youtube.com/embed/${videoID}">
+                                    `
+                                }
                             }
                         }
+
+                        out = out + `[<a href="${priority["link"]}" target="_BLANK">${priority["displayLink"].replace("www.","")}</a>]`
 
                     } else {
                         out = "I haven't found any results for that online"
