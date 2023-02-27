@@ -1,3 +1,5 @@
+const googleAPIkey = "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY"
+
 // Synonyms and actions
 const match = [
     [["say","repeat","recite","parrot","mirror","reiterate"],"ECHO",false], 
@@ -21,6 +23,25 @@ function getAction(word, question = null) {
 
     return action
 }
+
+// https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
+function nFormatter(num, digits) {
+    const lookup = [
+      { value: 1, symbol: "" },
+      { value: 1e3, symbol: "k" },
+      { value: 1e6, symbol: "M" },
+      { value: 1e9, symbol: "G" },
+      { value: 1e12, symbol: "T" },
+      { value: 1e15, symbol: "P" },
+      { value: 1e18, symbol: "E" }
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    var item = lookup.slice().reverse().find(function(item) {
+      return num >= item.value;
+    });
+    return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+}
+  
 
 function breakup(question) {
     var broken = []
@@ -105,7 +126,7 @@ function process(question) {
             url:"https://kgsearch.googleapis.com/v1/entities:search",
             async: false,
             data: {
-                key: "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY",
+                key: googleAPIkey,
                 indent: true,
                 limit: 1,
                 query: question.toLowerCase().replaceAll("who is","").replaceAll("tell me about","").replaceAll("what is","").replaceAll("?","")
@@ -150,7 +171,7 @@ function process(question) {
                 url:"https://www.googleapis.com/customsearch/v1",
                 async: false,
                 data: {
-                    key: "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY",
+                    key: googleAPIkey,
                     cx: "032d94750ca9d496a",
                     q: question
                 },
@@ -214,16 +235,47 @@ function process(question) {
                                     <br><br>
                                     <img src="${image}">
                                     `
-                                } else {
-                                    videoID = priority["link"]
-    
-                                    videoID = videoID.substr(videoID.length - 11);
-
-                                    out = out + `
-                                    <br><br>
-                                    <iframe src="https://youtube.com/embed/${videoID}">
-                                    `
                                 }
+                            }
+                        }
+
+                        if (priority["displayLink"] == "www.youtube.com") {
+                            // YouTube support
+                            videoID = priority["link"]
+                            videoID = videoID.substr(videoID.length - 11);
+
+                            if (priority["link"] == `https://www.youtube.com/watch?v=${videoID}`) {
+                                // Confirms that it is a video
+
+                                // YouTube video search
+                                $.ajax({
+                                    url:"https://www.googleapis.com/youtube/v3/videos",
+                                    data:{
+                                        id: videoID,
+                                        key: googleAPIkey,
+                                        part: "snippet,contentDetails,statistics,status"
+                                    },
+                                    async: false,
+                                    success: function(data){
+                                        let video = data["items"][0]
+                                        let videoInfo = video["snippet"]["localized"]
+                                        let statistics = video["statistics"]
+                                        let title = videoInfo["title"]
+                                        let thumb = video["snippet"]["thumbnails"]["maxres"]
+
+                                        console.log(video)
+
+                                        out = `
+                                        <b>${title}</b>
+                                        <br>
+                                        <i>${nFormatter(statistics["viewCount"],1)} Views | ${nFormatter(statistics["likeCount"],1)} Likes</i>
+                                        <br><br>
+                                        <a href="${priority["link"]}" target="_BLANK">
+                                            <img src="${thumb["url"]}">
+                                        </a>
+                                        `
+                                    }
+                                })
                             }
                         }
 

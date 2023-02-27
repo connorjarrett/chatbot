@@ -1,16 +1,11 @@
 var messageHistory = []
 
-function escapeHtml(unsafe) {
-    unsafe = unsafe.replaceAll("<br>","%LINEBREAK%")
-
+function escapeHtml(unsafe) {  
     let safe =  unsafe
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-    
-    safe = safe.replaceAll("%LINEBREAK%","<br>")
     
     return safe
  }
@@ -114,7 +109,7 @@ $("form").submit(function(e){
     $("#message-box")[0].value = ""
     
     // Show user message
-    send(message,"user")
+    send(escapeHtml(message),"user")
 
     // Ask reply from bot
     setTimeout(function(){
