@@ -29,6 +29,7 @@ function send(message,from) {
     let bubble = document.createElement("span")
     bubble.classList = "bubble"
     bubble.dataset.sender = from
+    bubble.style.scale = 0
     bubble.innerHTML = message
 
     $(".messages-container")[0].appendChild(bubble)
@@ -40,6 +41,9 @@ function send(message,from) {
     } else {
         button.classList.remove("unavailable")
     }
+
+    // Scale to full size
+    bubble.style.scale = ""
 }
 
 function askReply(question) {
@@ -47,8 +51,13 @@ function askReply(question) {
     let bubble = document.createElement("span")
     bubble.classList = "bubble typing"
     bubble.dataset.sender = "bot"
+    bubble.style.scale = 0
+
     $(".messages-container")[0].appendChild(bubble)
     $(".messages-container").scrollTop($(".messages-container")[0].scrollHeight)
+
+    // Scale to full size
+    bubble.style.scale = ""
 
     var reply = "this is a reply to that"
     console.log(`Asking reply for '${question}'`)
@@ -57,10 +66,15 @@ function askReply(question) {
     reply = process(question)
 
 
-    // Remove  typing bubble
+    // Remove typing bubble
     setTimeout(function(){
-        bubble.remove()
-        send(reply, "bot")
+        bubble.style.scale = 0
+        bubble.style.opacity = 0
+        setTimeout(function(){
+            bubble.remove()
+            send(reply, "bot")
+        },200)
+        
     },15*Math.min(Math.max(question.length, 150), 2500))
 }
 
@@ -81,6 +95,7 @@ function hasBotGone() {
 }
 
 $("form").submit(function(e){
+    // Handle question answers
     e.preventDefault();
 
     let data = $("form").serializeArray()
@@ -88,10 +103,28 @@ $("form").submit(function(e){
 
 
     if (!message || !hasBotGone()) {
+        // Make sure the user has
+        //   - Written in the box
+        //   - Waited for the bot to reply
+
         return false
     }
 
+    // Clean user input
     $("#message-box")[0].value = ""
+    
+    // Show user message
     send(message,"user")
-    askReply(message)
+
+    // Ask reply from bot
+    setTimeout(function(){
+        askReply(message)
+    },100)
 })
+setTimeout(function(){
+    send("Hi! I'm here to answer your questions &#128522;","bot")
+
+    setTimeout(function(){
+        send("Please send your feedback <a href='https://github.com/conjardev' target='_BLANK'>here</a> and expect bugs!","bot")
+    },500)
+},100)

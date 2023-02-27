@@ -47,6 +47,8 @@ body {
 
     font-size: 0.95em;
     font-weight: 300;
+
+    transition: all 600ms;
 }
 
 .bubble p {
@@ -84,6 +86,8 @@ body {
     
     background-color: #1390f9;
     color: white;
+
+    transform-origin: 100% 100%;
 }
 
 .bubble[data-sender="user"]::before {
@@ -96,11 +100,11 @@ body {
 
     background-color: #e6e6e8;
     color: #2e2e2e;
+
+    transform-origin: 0% 100%;
 }
 
 .bubble.typing {
-    /* position: absolute; */
-
     background-image: url("https://media.tenor.com/NDL0Cu0TAQoAAAAM/typing-loading.gif");
     background-size: 75%;
     background-position: center;
@@ -129,7 +133,7 @@ form input[type="text"] {
     flex-grow: 1;
     border: 1px solid grey;
 
-    padding: 5px 15px 5px 15px;
+    padding: 5px 26px 5px 15px;
     border-radius: 25px;
 }
 

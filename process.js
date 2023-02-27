@@ -2,6 +2,7 @@
 const match = [
     [["say","repeat","recite","parrot","mirror","reiterate"],"ECHO",false], 
     [["hello","good morning","good afternoon","good evening","hi","hello world"],"GREET",true],
+    [["thank you", "thanks", "cheers"],"THANK",true]
 ]
 
 function getAction(word, question = null) {
@@ -55,6 +56,10 @@ function breakup(question) {
 }
 
 function execute(action, params) {
+    if (getAction(params)) {
+        action = getAction(params)
+    }
+
     if (!action) {
         return null
     }
@@ -72,6 +77,8 @@ function execute(action, params) {
         return params
     } else if (action == "GREET") {
         return "Hello!"
+    } else if (action == "THANK") {
+        return "You're Welcome"
     }
 }
 
