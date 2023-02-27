@@ -155,7 +155,7 @@ function process(question) {
                         "dodgingtherain.com",
                         "www.facebook.com",
                         "m.facebook.com",
-                        "urbandictionary.com",
+                        "www.urbandictionary.com",
                         "twitter.com"
                     ]
 
