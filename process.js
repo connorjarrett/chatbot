@@ -1,3 +1,5 @@
+// yes the api key is exposed, when did i claim to be a cyber security expert
+// i'm like 90% sure that this is a read only key so it's probably fine.
 const googleAPIkey = "AIzaSyDA0P-tRZEytWhKqX_D_Z-Ce8hNARA3vAY"
 
 // Synonyms and actions
