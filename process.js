@@ -18,7 +18,7 @@ function process(question) {
         imageAlt: undefined
     }
 
-    if (!key) {
+    if (key == undefined) {
         return {
             text: "<b>No keys detected!</b><br>Did you read the <a href='https://github.com/conjardev/chatbot#how-to-install'>documentation</a>?",
             sources: [],
