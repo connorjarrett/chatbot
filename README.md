@@ -5,10 +5,12 @@
 
 | Table Of Contents |
 | - |
+| [How to install](#how-to-install) |
+| [Coming Soon](#coming-soon) |
 <!-- | [What is Chatbot?]() |
 | [How Does it Work? ]() | -->
 
-## How to Install
+## How To Install
 Due to security issues with exposed API keys, you're now going to have to run it yourself.
 
 #### :desktop_computer: Clone The Repository
@@ -57,3 +59,6 @@ To start, you're only going to need 1 key, and that is the Google API
 
 ### :white_check_mark: Last Checks
 Make sure that <code>keys.js.example</code> is renamed to just <code>key.js</code>
+
+## Coming Soon
+- <b>What's the time?</b><br>I want to make it so the time can be told for any timezone, it only currently works for whichever timezone you're in. All I need is a way to convert a string such as "London, UK" into either a timezone, a timezone difference or set of coordinates.
