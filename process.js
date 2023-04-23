@@ -18,6 +18,16 @@ function process(question) {
         imageAlt: undefined
     }
 
+    if (!key) {
+        return {
+            text: "<b>No keys detected!</b><br>Did you read the <a href='https://github.com/conjardev/chatbot#how-to-install'>documentation</a>?",
+            sources: [],
+            otherLinks: [],
+            web: undefined,
+            imageAlt: undefined
+        }
+    }
+
     // Only search Google if the key is there
     if (key.google != "GOOGLE") {
         
