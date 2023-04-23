@@ -1,2 +1,6 @@
+# Mac Things
 ._*
-.DS_Store
+**/.DS_Store
+
+# Don't leak your keys a second time
+keys.js

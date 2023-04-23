@@ -10,6 +10,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+a {
+    color: #064ecd;
+}
+
 .icon {
     font-family: 'Material Symbols Rounded';
 
@@ -43,7 +47,7 @@ body {
     border-radius: 15px;
 
     word-break: break-word;
-    max-width: 40%;
+    max-width: 55%;
 
     font-size: 0.95em;
     font-weight: 300;
@@ -56,12 +60,68 @@ body {
     padding: 0;
 }
 
-.bubble img, .bubble iframe {
+.bubble > div > .toggle-box {
+    margin-top: 7px;
+
+    color: grey;
+    font-size: 0.7em;
+}
+
+.bubble .other-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    margin-top: 4px;
+    gap: 7px;
+}
+
+.bubble .other-links img {
+    aspect-ratio: 1/1;
+    width: 32px;
+    border-radius: 7px;
+    margin: 0;
+    background-color: white;
+}
+
+.bubble .sources-box {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.bubble > div {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.bubble img, .bubble iframe, .bubble video {
     width: 100%;
     border-radius: 15px;
+    margin-top: 7px;
+    background-color: #cccccc;
     overflow: hidden;
     border: none;
     outline: none;
+}
+
+.bubble audio {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.bubble ol, .bubble ul {
+    padding-left: 30px;
+    margin-top: 5px;
+}
+
+.bubble video {
+    height: auto;
+    width: unset;
+    max-width: 100%;
 }
 
 .bubble::before {
@@ -182,11 +242,44 @@ form button.submit::after {
     background-image: url("media/send.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75%;
+    background-size: 60%;
 
     filter: invert(1);
 }
 
 form button[type="submit"].unavailable::after {
     filter: invert(0.1);
+}
+
+.enlarged {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.enlarged .bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 500%;
+    height: 500%;
+    object-fit: cover;
+    filter: blur(100px);
+    opacity: 0.9;
+}
+
+.enlarged .main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 50%;
+
+    border-radius: 16px;
 }

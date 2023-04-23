@@ -1,16 +1,59 @@
 # chatbot
+**chatbot** uses web search mixed with powerful integrations to produce a simple and informative result
 
-## How does it work?
-It has a few simple built in commands (Say and Greet) which allow it to execute specific functions when triggered. But the bulk of it (currently) is performed through the Google Search API and the Google Knowledge Graph API.
+---
 
-First, the bot will check to see if one of it's commands can answer the question, in the likely circumstance that it can't, it will check the Google Knowledge Graph for a stripped string of the question looking for keywords (Filtering out strings like "who is" or "what is"). If this returns a relevant result, it will be presented with a description and a picture with the source listed.
+| Table Of Contents |
+| - |
+<!-- | [What is Chatbot?]() |
+| [How Does it Work? ]() | -->
 
-If neither a command or the Knowledge Graph returns an answer, the bot will resort Google Search. It uses Google's search API and searches the query. By blacklisting a few websites and prioritising some others, 9 times out of 10 it gets a useful answer back. The bot **currently** uses the snippet from the webpage as the main text. If Google detects an image for that page, that will show too.
+## How to Install
+Due to security issues with exposed API keys, you're now going to have to run it yourself.
 
-## Future Plans
-- **Power Embeds**
-<br>Purpose built embeds based on the websites provided, so that it can for example, find the highlights in a news article, or give an option to play a song or show the lyrics. We are already starting to see this through the new YouTube integration
-- **Full page search**
-<br>Instead of using snippets it would scan the whole page and look for a good answer in the pages contents. Plan is to use Readability.js to get the main content. Problem is can't read the HTML of all web pages without being blocked for security risks.
-- **Hey Siri...**
-<br>Wouldn't it be funny to intigrate this as a Siri alternative in [browsur](https://github.com/conjardev/browsur)
+#### :desktop_computer: Clone The Repository
+1. Make sure Git is installed
+2. Run the command `git clone https://github.com/conjardev/chatbot.git`
+3. Navigate to the "chatbot" directory that was just created
+
+### :key: Get Your API Keys
+To start, you're only going to need 1 key, and that is the Google API
+<details>
+    <summary><b>&#128270; Google</b></summary>
+    You'll need:
+    <ul>
+        <li>A Google account</li>
+    </ul>
+    Steps:
+    <ol>
+        <li>Navigate to the Google <a href="https://console.cloud.google.com/">Cloud Console</a></li>
+        <li>Create a project</li>
+        <li>In the navigation menu, go to <code>APIs & Services > Library</code></li>
+        <li>Search for "Custom Search API"</li>
+        <li>Click "Enable"</li>
+        <li>In the navigation menu, go to <code>APIs & Services > Credentials</code></li>
+        <li>Under "API keys" click the first one</li>
+        <li>Copy the key and paste it into <code>keys.js</code>
+    </ol>
+</details>
+<details>
+    <summary>&#127925; Spotify</summary>
+    You'll need:
+    <ul>
+        <li>A Spotify Account</li>
+    </ul>
+    Steps:
+    <ol>
+        <li>Navigate to <a href="https://developer.spotify.com/dashboard">Spotify Developers</a></li>
+        <li>Click "Create App"</li>
+        <li>Set the app name and description to whatever you want</li>
+        <li>You do not need to fill the <code>Website</code> field</li>
+        <li>Set <code>Redirect URI</code> to any valid URL, such as "https://connorjarrett.com", it will not be used later.</li>
+        <li>In your app, click "Settings"</li>
+        <li>Copy the "Client ID" into <code>keys.js</code> under <code>spotify.clientID</code></li>
+        <li>Click "View client secret" and copy it into <code>keys.js</code> under <code>spotify.clientSecret</code></li>
+    </ol>
+</details>
+
+### :white_check_mark: Last Checks
+Make sure that <code>keys.js.example</code> is renamed to just <code>key.js</code>

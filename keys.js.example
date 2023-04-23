@@ -1,0 +1,29 @@
+const key = {
+    google: "GOOGLE",
+    spotify: {
+        clientID : "CLIENT_ID",
+        clientSecret: "CLIENT_SECRET"
+    }
+}
+
+/*
+
+### How To Use
+- Enter the required keys into the fields. For example if your google key is "123",
+  line 2 will look like google: "123"
+- Rename the file to "keys.js"
+
+### Required Keys:
+Google
+
+### Optional Keys:
+Spotfy : Movie Soundtracks, Song search
+
+#### WHERE TO GET KEYS ####
+google: https://developers.google.com/custom-search/v1/overview#api_key
+spotify: https://developer.spotify.com
+
+The spotify one requires oAuth so the key setup is more compliacated than google.
+You will need to create an app and copy the Client ID and Client Secret into the inputs provided
+
+*/
