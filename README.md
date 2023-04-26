@@ -35,7 +35,7 @@ To start, you're only going to need 1 key, and that is the Google API
         <li>Click "Enable"</li>
         <li>In the navigation menu, go to <code>APIs & Services > Credentials</code></li>
         <li>Under "API keys" click the first one</li>
-        <li>Copy the key and paste it into <code>keys.js</code>
+        <li>Copy the key and paste it into <code>src/keys.js</code>
     </ol>
 </details>
 <details>
@@ -52,13 +52,14 @@ To start, you're only going to need 1 key, and that is the Google API
         <li>You do not need to fill the <code>Website</code> field</li>
         <li>Set <code>Redirect URI</code> to any valid URL, such as "https://connorjarrett.com", it will not be used later.</li>
         <li>In your app, click "Settings"</li>
-        <li>Copy the "Client ID" into <code>keys.js</code> under <code>spotify.clientID</code></li>
-        <li>Click "View client secret" and copy it into <code>keys.js</code> under <code>spotify.clientSecret</code></li>
+        <li>Copy the "Client ID" into <code>src/keys.js</code> under <code>spotify.clientID</code></li>
+        <li>Click "View client secret" and copy it into <code>src/keys.js</code> under <code>spotify.clientSecret</code></li>
     </ol>
 </details>
 
 ### :white_check_mark: Last Checks
-Make sure that <code>keys.js.example</code> is renamed to just <code>key.js</code>
+Make sure that <code>src/keys.js.example</code> is renamed to just <code>src/key.js</code>
+To run open <code>src/index.html</code> in your browser.
 
 ## Coming Soon
 - <b>What's the time?</b><br>I want to make it so the time can be told for any timezone, it only currently works for whichever timezone you're in. All I need is a way to convert a string such as "London, UK" into either a timezone, a timezone difference or set of coordinates.

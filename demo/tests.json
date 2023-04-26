@@ -1,0 +1,116 @@
+[
+    {
+        "question": "Who is Tim Cook?",
+        "response-detail": 2,
+        "correct-answer": true,
+        "process-time": 1120
+    },
+    {
+        "question": "Where is Apple Park?",
+        "response-detail": 2,
+        "correct-answer": true,
+        "process-time": 774
+    },
+    {
+        "question": "Tell me about the Wolf Of Wall Street",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 3115
+    },
+    {
+        "question": "Tell me about the man that climbed Salesforce tower",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 609
+    },
+    {
+        "question": "When did the Queen die?",
+        "response-detail": 1,
+        "correct-answer": false,
+        "process-time": 645
+    },
+    {
+        "question": "What's the time right now?",
+        "response-detail": 1,
+        "correct-answer": true,
+        "process-time": 412
+    },
+    {
+        "question": "Who played Aunt Emma in the Wolf of Wall Street?",
+        "response-detail": 3,
+        "correct-answer": false,
+        "process-time": 618
+    },
+    {
+        "question": "Where can I stay the night in London?",
+        "response-detail": 1,
+        "correct-answer": false,
+        "process-time": 675
+    },
+    {
+        "question": "What is MacOS Ventura?",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 630
+    },
+    {
+        "question": "Connor Jarrett's Github",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 419
+    },
+    {
+        "question": "Find me cheap holidays to New York",
+        "response-detail": 1,
+        "correct-answer": false,
+        "process-time": 634
+    },
+    {
+        "question": "What is the capital of France?",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 1381
+    },
+    {
+        "question": "Can you tell me the latest news headlines for today?",
+        "response-detail": 1,
+        "correct-answer": false,
+        "process-time": 712
+    },
+    {
+        "question": "Can you provide the definition of the word 'serendipity'?",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 971
+    },
+    {
+        "question": "Can you provide me with a recipe for a classic chocolate chip cookie?",
+        "response-detail": 2,
+        "correct-answer": true,
+        "process-time": 719
+    },
+    {
+        "question": "Can you provide the phone number for the nearest pizza place?",
+        "response-detail": 1,
+        "correct-answer": false,
+        "process-time": 581
+    },
+    {
+        "question": "How many seasons of bobs burgers are there?",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 1108
+    },
+    {
+        "question": "Why isn't pluto a planet?",
+        "response-detail": 3,
+        "correct-answer": true,
+        "process-time": 750
+    },
+    {
+        "question": "What is the population of Tokyo, Japan?",
+        "response-detail": 3,
+        "correct-answer": false,
+        "process-time": 1529
+    }
+]

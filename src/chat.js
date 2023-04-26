@@ -50,7 +50,7 @@ function send(message,from, manualscale) {
     return bubble
 }
 
-function buildReply(replyObject) {
+function buildReply(replyObject, hideInsights) {
     var reply = ""
     
     console.log(replyObject)
@@ -110,12 +110,23 @@ function buildReply(replyObject) {
         reply += "</details>"
     }
 
+    if (!hideInsights) {
+        reply += `<details class="toggle-box" style="margin: 0;"><summary>Insights</summary>
+            <b>Time to process: </b>${replyObject.finished - replyObject.started}ms<br>
+            <b>Artificial time: </b>${replyObject.artificialTime}ms
+        </details><br>`
+    }
+
     reply += "<sub><a href='https://github.com/conjardev/chatbot/issues'>Is something not right?</a></sub>"
 
     return reply
 }
 
 function askReply(question) {
+    // Set time for insights
+    const artificialTime = 15*Math.min(Math.max(question.length, 150), 2500)
+    let started = Date.now()
+
     // Add typing bubble
     let bubble = document.createElement("span")
     bubble.classList = "bubble typing"
@@ -142,7 +153,11 @@ function askReply(question) {
     }
 
     async function getReply() {
-        reply = buildReply(await fetchReply())
+        var replyObject = await fetchReply()
+        replyObject.started = started
+        replyObject.artificialTime = artificialTime
+
+        const reply = buildReply(replyObject)
 
         var replyBubble = send(reply, "bot", true)
 
@@ -158,7 +173,7 @@ function askReply(question) {
                 $(".messages-container").scrollTop($(".messages-container")[0].scrollHeight)
             },200)
             
-        },15*Math.min(Math.max(question.length, 150), 2500))
+        }, artificialTime)
     }
 
     getReply()
@@ -209,13 +224,15 @@ $("form").submit(function(e){
 })
 
 // Starting messages
-setTimeout(function(){
-    send("Hi! I'm here to answer your questions &#128522;","bot")
-
+if ($("#message-box").length > 0) {
     setTimeout(function(){
-        send("<p>Please send your feedback <a href='https://github.com/conjardev' target='_BLANK'>here</a> and expect bugs!</p>","bot")
-    },500)
-},100)
+        send("Hi! I'm here to answer your questions &#128522;","bot")
+
+        setTimeout(function(){
+            send("<p>Please send your feedback <a href='https://github.com/conjardev' target='_BLANK'>here</a> and expect bugs!</p>","bot")
+        },500)
+    },100)
+}
 
 // Image enlarger
 function enlarge(src) {

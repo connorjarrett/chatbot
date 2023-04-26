@@ -41,6 +41,7 @@ a {
 .bubble {
     position: relative;
     display: inline-flex;
+    flex-direction: column;
 
     padding: 7px 15px 7px 15px;
     margin-bottom: 15px;

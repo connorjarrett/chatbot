@@ -1,0 +1,286 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.bubble {
+    position: relative;
+    display: inline-flex;
+
+    margin: 0;
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 5px;
+    border-radius: 2em;
+
+    font-weight: 300;
+
+    transition: all 600ms;
+
+    margin-right: auto;
+    background-color: #1390f9;
+    color: white;
+
+    transform-origin: 0% 100%;
+    z-index: 2;
+}
+
+.bubble::before {
+    position: absolute;
+    content: '';
+
+    background-color: inherit;
+    width: 25px;
+    height: 25px;
+
+    bottom: -3px;
+    left: -3px;
+
+    border-radius: 100vmin;
+    z-index: -1;
+}
+
+.bubble.invert {
+    margin-left: auto;
+    margin-right: 0;
+
+    background-color: #e9e9e9;
+    color: #2e2e2e;
+
+    transform-origin: 0% 100%;
+}
+
+.bubble.invert::before {
+    left: unset;
+    right: -3px;
+
+    width: 20px;
+    height: 20px;
+}
+
+.bubble.typing {
+    background-image: url("../src/media/typing.gif");
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 1em;
+    padding: 1.5em 2em 1.5em 2em;
+
+    /* width: 20px;
+    padding: 20px 30px 20px 30px; */
+}
+
+.bubble.typing::before {
+    width: 17px;
+    height: 17px;
+    right: -7px;
+}
+
+section.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+
+    background-color: #fafafa;
+}
+
+section.hero .content {
+    max-width: 8in;
+    min-width: 5in;
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 500 !important;
+}
+
+main > section {
+    padding: 50px;
+}
+
+main > section:nth-child(n+2) {
+    margin-top: 50px;
+}
+
+main > section article {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+    text-align: center;
+}
+
+section .heading {
+    font-size: 1.5em;
+}
+
+section .heading h2 {
+    color: #3e3e3e;
+    font-size: 3em;
+    font-weight: 900;
+
+    text-align: center;
+
+    margin: 0;
+}
+
+section .heading h3 {
+    margin: 0;
+    color: #686868;
+
+    font-size: 1.25em;
+    text-align: center;
+}
+
+section article p {
+    color: #838383;
+    font-size: 1.5em;
+    margin: 0 0 2em 0;
+}
+
+.demo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/2;
+    max-width: 4in;
+    min-width: 110px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.demo::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-image: url("media/phone_bezel.png");
+    pointer-events: none;
+
+    left: 0;
+    background-size: 99.3%;
+    z-index: 100;
+}
+
+.demo iframe {
+    width: 90%;
+    height: 85%;
+    
+    outline: none;
+    border: none;
+    
+    bottom: 47%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    border-radius: 1em;
+}
+
+.demo .cover {
+    position: absolute;
+    z-index: 10;
+    
+    width: 95%;
+    height: 98%;
+    border-radius: 12%;
+    
+    background: rgba(15, 14, 14, 0.87) url("media/play.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+
+    transition: all 500ms;
+}
+
+.demo .cover h4 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    
+    color: white;
+    font-size: 1.9em;
+    width: 89%;
+    margin: 0;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+    cursor: default;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.demo-grid .demo:nth-child(n+4) {
+    display: none;
+}
+
+@media screen and (max-width: 14in) {
+    .demo-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    .demo-grid .demo:nth-child(n+3) {
+        display: none;
+    }
+
+    main > section article {
+        max-width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 8in) {
+    .demo-grid {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .demo .cover h4 {
+        font-size: 1.2em;
+    }
+}
+
+.chart {
+    clip-path: inset(1px 1px);
+}
+
+@media screen and (max-width: 5.5in) {
+    section.hero, main > section {
+        padding: 25px;
+    }
+
+    main > section .heading {
+        font-size: 0.9em;
+    }
+
+    section.hero .content {
+        min-width: unset;
+        font-size: 0.7em;
+    }
+}
