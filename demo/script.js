@@ -369,6 +369,5 @@ const demo = {
 }
 
 $(".demo").each(function(){
-    console.log(this)
     demo.build(this)
 })
