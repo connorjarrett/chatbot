@@ -3,6 +3,10 @@ const key = {
     spotify: {
         clientID : "CLIENT_ID",
         clientSecret: "CLIENT_SECRET"
+    },
+    amadeus: {
+        apiKey: "API_KEY",
+        apiSecret: "API_SECRET"
     }
 }
 
@@ -18,10 +22,12 @@ Google
 
 ### Optional Keys:
 Spotfy : Movie Soundtracks, Song search
+Amadeus: Flights & Travel
 
 #### WHERE TO GET KEYS ####
 google: https://developers.google.com/custom-search/v1/overview#api_key
 spotify: https://developer.spotify.com
+amadeus: https://developers.amadeus.com/get-started/get-started-with-self-service-apis-335
 
 The spotify one requires oAuth so the key setup is more compliacated than google.
 You will need to create an app and copy the Client ID and Client Secret into the inputs provided

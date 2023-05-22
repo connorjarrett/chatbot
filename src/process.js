@@ -67,7 +67,8 @@ function process(question) {
                     "www.bbc.com",
                     "abc7news.com",
                     "www.imdb.com",
-                    "time.is"
+                    "time.is",
+                    "www.tui.co.uk"
                 ]
 
                 const blacklist = [

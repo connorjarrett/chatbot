@@ -53,7 +53,7 @@ function embed(page) {
             }
         }
 
-        if (pagemap.cse_thumbnail) {
+        if (!result.image && pagemap.cse_thumbnail) {
             // Backup image
             result.image = pagemap.cse_thumbnail[0].src
         }
@@ -869,6 +869,47 @@ function embed(page) {
             // I'm clearly not as good at this as I thought I was
         }
 
+        // Holidays
+        // TUI
+        if (page.link.startsWith("https://www.tui.co.uk/destinations/") && key.amadeus.apiKey && key.amadeus.apiSecret) {
+            // Sharpen Image
+            result.image = pagemap.metatags[0]["og:image"].split("?")[0]
+        
+            // Find destination
+            const urlShortened = page.link.replace("https://www.tui.co.uk/destinations/","")
+            var destination = urlShortened.split("/")
+            destination.pop()
+
+            for (let i=0; i<destination.length; i++) {
+                destination[i] = destination[i].replaceAll("-"," ")
+                destination[i] = destination[i].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+                destination[i] = `<b>${destination[i]}</b>`
+            }
+
+            // Get Amadeus token
+            $.ajax({
+                async: false,
+                url: "https://test.api.amadeus.com/v1/security/oauth2/token",
+                method: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                data: {
+                    grant_type: "client_credentials",
+                    client_id: key.amadeus.apiKey,
+                    client_secret: key.amadeus.apiSecret
+                },
+                success: function(data) {
+                    const token = data["access_token"]
+                    
+                }
+            })
+        
+            result.text = `
+            Here's what I found for holidays to ${destination[destination.length - 1]}, ${destination[destination.length - 2]}:
+            <br><br>
+
+            `
+        }
+
         // Stack Overflow Questions + Answers:
         if (page.link.startsWith("https://stackoverflow.com/questions/")) {
             // Build the basic question result with
@@ -921,6 +962,8 @@ function embed(page) {
             })
         }    
     }
+
+
 
     return result
 }
