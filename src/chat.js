@@ -117,7 +117,7 @@ function buildReply(replyObject, hideInsights) {
         </details><br>`
     }
 
-    reply += "<sub><a href='https://github.com/conjardev/chatbot/issues'>Is something not right?</a></sub>"
+    reply += "<sub><a href='https://github.com/connorjarrett/chatbot/issues'>Is something not right?</a></sub>"
 
     return reply
 }
@@ -229,7 +229,7 @@ if ($("#message-box").length > 0) {
         send("Hi! I'm here to answer your questions &#128522;","bot")
 
         setTimeout(function(){
-            send("<p>Please send your feedback <a href='https://github.com/conjardev' target='_BLANK'>here</a> and expect bugs!</p>","bot")
+            send("<p>Please send your feedback <a href='https://github.com/connorjarrett' target='_BLANK'>here</a> and expect bugs!</p>","bot")
         },500)
     },100)
 }

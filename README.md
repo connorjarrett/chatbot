@@ -15,7 +15,7 @@ Due to security issues with exposed API keys, you're now going to have to run it
 
 #### :desktop_computer: Clone The Repository
 1. Make sure Git is installed
-2. Run the command `git clone https://github.com/conjardev/chatbot.git`
+2. Run the command `git clone https://github.com/connorjarrett/chatbot.git`
 3. Navigate to the "chatbot" directory that was just created
 
 ### :key: Get Your API Keys

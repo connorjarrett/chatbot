@@ -24,7 +24,7 @@ function process(question) {
         key != undefined
     } catch(error) {
         nokey = {
-            text: "<b>No keys detected!</b><br>Did you read the <a href='https://github.com/conjardev/chatbot#how-to-install'>documentation</a>?",
+            text: "<b>No keys detected!</b><br>Did you read the <a href='https://github.com/connorjarrett/chatbot#how-to-install'>documentation</a>?",
             sources: [],
             otherLinks: [],
             web: undefined,
